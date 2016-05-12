@@ -15,7 +15,7 @@ authenticate.prototype.token = function(postData, cb) {
             email: postData.email,
             password: postData.password
         }, function(err, existingUser) {
-            if (existingUser) {
+            if (!existingUser) {
                 var token = comm.createJWT(postData.email);
                 conn.angularUser.update({
                     email: postData.email,
@@ -47,16 +47,16 @@ authenticate.prototype.gitToken = function(params, cb) {
 };
 
 authenticate.prototype.mobileToken = function(mobile, cb) {
-    if (comm.isMobile(mobile)) {
+    if (comm.isMobile(mobile.mobile)) {
         conn.User.findOne({
             mobile: mobile.mobile
         }, function(error, user) {
             if (error) cb(error, null);
             if (!user) {
-                cb("error in user mobile", null);
-            } else {
                 var token = comm.createJWT(mobile);
                 cb(null, token);
+            } else {
+                cb("error in user mobile", null);
             }
         });
     } else {
@@ -65,7 +65,7 @@ authenticate.prototype.mobileToken = function(mobile, cb) {
 }
 
 authenticate.prototype.verify = function(token, cb) {
-    var verify = comm.verifyJWT(token)
+    var verify = comm.verifyJWT(token.token)
     cb(null, verify);
 };
 

@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var state = {
         db: null,
     },
-    url = 'mongodb://localhost:27071/sp';
+    url = 'mongodb://developer:bridgeit@ds013908.mongolab.com:13908/sp';
 
 module.exports = {
     connect: function(cb) {
