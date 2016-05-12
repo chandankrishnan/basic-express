@@ -1,0 +1,40 @@
+{
+  "name": "Express-Base",
+  "version": "1.0.0",
+  "description": "Skeleton app for ExpressJS app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node_modules/.bin/mocha tests/**"
+  },
+  "keywords": [
+    "base",
+    "project",
+    "node",
+    "express",
+    "structure"
+  ],
+  "author": "Ashes Vats",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "bunyan": "^1.8.1",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "chai-match": "^1.1.1",
+    "colors": "^1.1.2",
+    "compression": "^1.6.1",
+    "events": "^1.1.0",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^5.7.0",
+    "mocha": "^2.4.5",
+    "mongoose": "^4.4.10",
+    "multiparty": "^4.1.2",
+    "supertest": "^1.2.0",
+    "util": "^0.10.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.4",
+    "should": "^6.0.1"
+  }
+}
