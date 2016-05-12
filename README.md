@@ -12,12 +12,17 @@
 5)<a href="http://jade-lang.com/">jade</a><br>
 6)<a href="https://www.npmjs.com/package/multiparty">multiparty</a><br>
 7)<a href="https://www.npmjs.com/package/jsonwebtoken">jsonwebtoken</a><br>
-8)<a href="https://www.npmjs.com/package/bunyan">bunyan</a>
+8)<a href="https://www.npmjs.com/package/bunyan">bunyan</a><br>
 
-eg.sudo npm install body-parser --save  :beers::beers:
+<p> install all require npm dependencies for app using following command<br>
+<b>eg.sudo npm install body-parser --save</b>  :beers::beers:
+</p>
+
 
 #install npm dev dependency :paperclip::paperclip:
 1)<a href="https://www.npmjs.com/package/mocha">mocha</a><br>
 2)<a href="https://www.npmjs.com/package/should">should</a>
 
-eg.sudo npm install mocha --dev --save  :beers::beers:
+<p> install all require npm development dependencies for app using following command<br>
+<b>eg.sudo npm install mocha --dev --save</b>  :beers::beers:
+</p>
