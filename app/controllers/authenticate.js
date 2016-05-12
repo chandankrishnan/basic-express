@@ -19,8 +19,11 @@ router.post('/user', function(req, res) {
         password: req.body.password
     }
     auth.token(postData, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     });
 });
 
@@ -31,12 +34,15 @@ router.post('/github', function(req, res) {
     var params = {
         code: req.body.code,
         client_id: req.body.clientId,
-        client_secret: 'f154f7923e45f63ca749955d7b515eb499c8a1',//change'dd client secret
+        client_secret: 'f154f7923e45f63ca749955d7b515eb499c8a1', //change'dd client secret
         redirect_uri: req.body.redirectUri
     };
     auth.gitToken(params, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     });
 });
 
@@ -51,8 +57,11 @@ router.post('/mobile', function(req, res) {
         mobile: req.body.mobile
     };
     auth.mobileToken(mobile, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     });
 });
 
@@ -67,8 +76,11 @@ router.post('/verify', function(req, res) {
         token: req.body.token || req.query.token || req.headers['x-access-token']
     }
     auth.verify(token, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     });
 });
 

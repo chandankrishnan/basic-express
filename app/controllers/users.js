@@ -27,8 +27,11 @@ router.post('/save', function(req, res) {
         isActive: false
     }
     var resw = user.save(userData, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     });
 
 });

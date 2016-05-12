@@ -65,8 +65,11 @@ router.post('/:mobile/:username', rawBody, function(req, res) {
             image: req.rawBody
         }
         content.postdata(data, function(error, data) {
-            if (error) res.send(error)
-            else res.send(data)
+            if (error) {
+                res.send(error);
+            } else {
+                res.send(data);
+            }
         })
     }
 })

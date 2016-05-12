@@ -167,4 +167,5 @@ user1.prototype.signUp = function(data, cb) {
         cb("enter valid email address", null)
     }
 };
+
 module.exports = user1;

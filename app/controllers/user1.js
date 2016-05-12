@@ -18,8 +18,11 @@ router.post('/mobile-registration', function(req, res) {
         username: req.body.username
     }
     conn.newRegister(userData, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     })
 });
 
@@ -35,8 +38,11 @@ router.post('/mobile-verification', function(req, res) {
         otp: req.body.otp
     }
     conn.verification(userData, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     })
 });
 
@@ -54,8 +60,11 @@ router.post('/set-profile-pic', function(req, res) {
             mobile: fields.mobile
         }
         conn.setprofilePic(postData, function(error, data) {
-            if (error) res.send(error)
-            else res.send(data)
+            if (error) {
+                res.send(error);
+            } else {
+                res.send(data);
+            }
         })
     })
 });
@@ -73,8 +82,11 @@ router.post('/feedback', function(req, res) {
         message: req.body.message
     }
     conn.feedback(postData, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     })
 });
 
@@ -86,8 +98,11 @@ router.post('/feedback1', function(req, res) {
         r: new RegExp(req.body.search_str, 'i')
     }
     conn.search(postData, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     })
 });
 
@@ -96,8 +111,11 @@ router.post('/feedback1', function(req, res) {
 //=================================================================//
 router.get('/feedback-all', function(req, res) {
     conn.searchAll(function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     })
 });
 
@@ -114,8 +132,11 @@ router.post('/signup', function(req, res) {
         password: req.body.password
     }
     conn.signUp(postData, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     });
 });
 module.exports = router;

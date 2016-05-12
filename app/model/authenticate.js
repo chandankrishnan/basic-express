@@ -68,4 +68,5 @@ authenticate.prototype.verify = function(token, cb) {
     var verify = comm.verifyJWT(token)
     cb(null, verify);
 };
+
 module.exports = authenticate;

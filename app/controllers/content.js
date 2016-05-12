@@ -21,8 +21,11 @@ router.post('/content', function(req, res) {
             contentType: files.file[0].originalFilename.substring(files.file[0].originalFilename.lastIndexOf('.') + 1, files.file[0].originalFilename.length)
         };
         conn.addContent(postData, function(error, data) {
-            if (error) res.send(error)
-            else res.send(data)
+            if (error) {
+                res.send(error);
+            } else {
+                res.send(data);
+            }
         });
     })
 });
@@ -38,8 +41,11 @@ router.get('/user-content-view/:contentId/:action', function(req, res) {
         action: req.params.action
     }
     conn.contentView(Data, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     });
 });
 
@@ -52,8 +58,11 @@ router.get('/user-content-byid/:userId', function(req, res) {
         params: req.params.userId.split(',')
     }
     conn.userbyId(Data, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     })
 });
 
@@ -67,8 +76,11 @@ router.get('/user-content-info/:contentId', function(req, res) {
         params: req.params.contentId.split(',')
     }
     conn.contentbyId(Data, function(error, data) {
-        if (error) res.send(error)
-        else res.send(data)
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     })
 });
 

@@ -31,4 +31,5 @@ UserList.prototype.save = function(userData, cb) {
         return cb(null, data);
     })
 }
+
 module.exports = UserList;
