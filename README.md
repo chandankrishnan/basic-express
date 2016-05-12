@@ -1,8 +1,7 @@
 # Basic-express skeleton App :runner::runner::octocat::octocat::octocat::tada::tada::grinning:<br>
 
-<p> <b>F</b>irst we create a directory i.e basic-express in that directory we create another directory i.e controller,model ,database,helper,config also create a file i.e app.js</p>
-<p><b>A</b>fter that, we excute following command 
-<b>sudo npm init</b> :beers::beers:<br> then creat <b>package.json</b> file</p><br>
+<p> <b>F</b>irst we create a directory i.e basic-express in that directory we create another directory i.e controller,model ,database,helper,config also create a file i.e app.js.After that, we excute following command<br></p> 
+<b>sudo npm init</b> :beers::beers:<br> <p>then creat <b>package.json</b> file</p><br>
 
 #Folder Structure :thumbsup::thumbsup::boom::boom::triangular_ruler::triangular_ruler:
 <br>
