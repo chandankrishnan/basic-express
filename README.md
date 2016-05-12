@@ -2,8 +2,8 @@
 
 #Folder Structure
 <br>
-<a href="http://www.myspacegens.com/"><img src="http://server.myspace-shack.com/d22/folderstrc.png" border="0" alt="Image Hosted At MyspaceGens"></a>
- </br>
+<img src="http://server.myspace-shack.com/d22/folderstrc.png" border="2" alt="basic folder structure">
+</br>
 # install npm dependency
 1)<a href="https://www.npmjs.com/package/body-parser">body-parser</a><br>
 2)<a href="https://www.npmjs.com/package/util">util</a><br>
