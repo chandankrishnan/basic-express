@@ -31,7 +31,7 @@ router.post('/github', function(req, res) {
     var params = {
         code: req.body.code,
         client_id: req.body.clientId,
-        client_secret: 'f154f7923e45f63ca749955d7b515eb499c8a1dd',
+        client_secret: 'f154f7923e45f63ca749955d7b515eb499c8a1',//change'dd client secret
         redirect_uri: req.body.redirectUri
     };
     auth.gitToken(params, function(error, data) {
