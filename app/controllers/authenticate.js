@@ -8,11 +8,11 @@ var express = require('express'),
 
 //=================================================================//
 //                         JWT for angular                         //
-// user send email and password for jwt authentication then check  // 
+// user send email and password for jwt authentication then check  //
 // if it valid email e.g(chandan@gmail.com) and string formated    //
 // password eg(chandan) then server generate token with help of    //
 // secret value and send to user                                   //
-//=================================================================// 
+//=================================================================//
 router.post('/user', function(req, res) {
     var postData = {
         email: req.body.email,
@@ -48,7 +48,7 @@ router.post('/github', function(req, res) {
 
 //=================================================================//
 //                    JWT for shopping pad                         //
-// user send mobile for jwt authentication then check if it valid  // 
+// user send mobile for jwt authentication then check if it valid  //
 // mobile e.g(+91-7276774708) then server generate token with help //
 // of secret value and send to user                                //
 //=================================================================//
@@ -84,4 +84,15 @@ router.post('/verify', function(req, res) {
     });
 });
 
+auth.on('data-save',function(){
+  console.log('data saved');
+});
+
+auth.on('token verify',function(){
+  console.log('token verify');
+});
+
+auth.on('send token',function(){
+  console.log('send token');
+});
 module.exports = router;

@@ -67,9 +67,9 @@ router.get('/user-content-byid/:userId', function(req, res) {
 });
 
 //================================================================//
-// view user content by passing array of contentId then spit      // 
+// view user content by passing array of contentId then spit      //
 // contentId and find contentId in database then send result      //
-// in json format                                                 // 
+// in json format                                                 //
 //================================================================//
 router.get('/user-content-info/:contentId', function(req, res) {
     var Data = {
@@ -84,4 +84,7 @@ router.get('/user-content-info/:contentId', function(req, res) {
     })
 });
 
+conn.on('data-save',function(){
+  console.log('data saved');
+});
 module.exports = router;

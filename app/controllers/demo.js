@@ -1,6 +1,7 @@
 //=================================================================//
 //             module dependencies                                 //
 //=================================================================//
+
 var express = require('express'),
     router = express.Router(),
     contentInfo = require('../model/demo'),
@@ -74,5 +75,7 @@ router.post('/:mobile/:username', rawBody, function(req, res) {
         })
     }
 })
-
+content.on('data-save',function(){
+  console.log('data saved');
+})
 module.exports = router;

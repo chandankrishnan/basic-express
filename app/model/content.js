@@ -10,6 +10,7 @@ function content() {
 util.inherits(content, EventEmitter);
 
 content.prototype.addContent = function(postData, cb) {
+  var self=this;
     if (comm.isFile(postData.file.originalFilename)) {
         fs.readFile(postData.file.path, function(error, data) {
             var data = new conn.addContent({
@@ -24,6 +25,7 @@ content.prototype.addContent = function(postData, cb) {
                 if (error) {
                     cb(error, null);
                 } else {
+                  self.emit('data-save');
                     cb(null, "successfully uploaded");
                 }
             });
