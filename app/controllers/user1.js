@@ -73,7 +73,7 @@ router.post('/set-profile-pic', function(req, res) {
 // user post feedback,the field i.e name,email,message then check  //
 // name length should be greater than 3,email should proper or not //
 // and meassage length should be greater than 5.if it's correct    //
-// then save in database else show error message                   //   
+// then save in database else show error message                   //
 //=================================================================//
 router.post('/feedback', function(req, res) {
     var postData = {
@@ -121,10 +121,9 @@ router.get('/feedback-all', function(req, res) {
 
 //=================================================================//
 // user send data i.e name,email,contact and password for signup   //
-// then validate it and save in database                           // 
+// then validate it and save in database                           //
 //=================================================================//
 router.post('/signup', function(req, res) {
-    console.log('inside signup');
     var postData = {
         name: req.body.name,
         email: req.body.email,
@@ -139,4 +138,17 @@ router.post('/signup', function(req, res) {
         }
     });
 });
+
+conn.on('data-save',function(){
+  console.log('data saved')
+});
+
+conn.on('data-verify',function(){
+  console.log('data verify');
+});
+
+conn.on('set-profile-pic',function(){
+  console.log('set a profile pic');
+});
+
 module.exports = router;

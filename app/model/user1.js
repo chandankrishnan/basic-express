@@ -10,6 +10,7 @@ function user1() {
 util.inherits(user1, EventEmitter);
 
 user1.prototype.newRegister = function(userData, cb) {
+  var self=this;
     if (comm.isMobile(userData.mobile)) {
         conn.User.findOne({
             mobile: userData.mobile
@@ -32,6 +33,7 @@ user1.prototype.newRegister = function(userData, cb) {
                             cb(error, null);
                     })
                 }, 100)
+                self.emit('data-save');
 
             }
         })
@@ -41,6 +43,7 @@ user1.prototype.newRegister = function(userData, cb) {
 };
 
 user1.prototype.verification = function(userData, cb) {
+  var self=this;
     if (comm.isMobile(userData.mobile)) {
         conn.User.findOne({
             mobile: userData.mobile,
@@ -59,6 +62,8 @@ user1.prototype.verification = function(userData, cb) {
                         cb(err, null);
                     } else {
                         cb(null, "seccessfully register...");
+                        self.emit('data-verify');
+
                     }
                 })
             } else {
@@ -71,6 +76,7 @@ user1.prototype.verification = function(userData, cb) {
 };
 
 user1.prototype.setprofilePic = function(userData, cb) {
+  var self=this;
     if (comm.isFile(userData.image.originalFilename)) {
         conn.User.findOne({
             mobile: userData.mobile
@@ -83,6 +89,7 @@ user1.prototype.setprofilePic = function(userData, cb) {
                         cb(err, null);
                     } else {
                         cb(null, "successfully updated...");
+                        self.emit('set-profile-pic');
                     }
                 })
             } else {
@@ -95,6 +102,7 @@ user1.prototype.setprofilePic = function(userData, cb) {
 };
 
 user1.prototype.feedback = function(postData, cb) {
+  var self=this;
     if (postData.name.length > 3 && postData.message.length > 5 && comm.isEmail(postData.email)) {
         var data = new conn.feedback({
             name: postData.name,
@@ -106,6 +114,7 @@ user1.prototype.feedback = function(postData, cb) {
                 cb(err, null);
             } else {
                 cb(null, "Successfully uploaded");
+                self.emit('data-save');
             }
         })
     } else {
@@ -142,6 +151,7 @@ user1.prototype.searchAll = function(cb) {
 };
 
 user1.prototype.signUp = function(data, cb) {
+  var self=this;
     if (comm.isEmail(data.email) && comm.isMobile(data.contact) && data.name.length > 3 && data.password.length > 7) {
         conn.angularUser.findOne({
             email: data.email
@@ -160,6 +170,7 @@ user1.prototype.signUp = function(data, cb) {
                     cb(err, null);
                 } else {
                     cb(null, "success save");
+                    self.emit('data-save');
                 }
             })
         })

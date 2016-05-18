@@ -15,7 +15,11 @@ util.inherits(UserList, EventEmitter);
 //Get all users
 UserList.prototype.all = function(cb) {
     return conn.User.find({}, function(err, data) {
-        return cb(data);
+      if(err){
+        return cb(err,null);
+      }else{
+        return cb(null,data);
+      }
     });
 };
 

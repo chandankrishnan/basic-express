@@ -7,8 +7,12 @@ var express = require('express'),
 
 // return all users
 router.get('/', function(req, res, next) {
-    user.all(function(data) {
+    user.all(function(err,data) {
+      if(err){
+        res.send(err);
+      }else{
         res.send(data);
+      }
     });
 });
 
