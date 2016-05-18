@@ -54,6 +54,7 @@ function rawBody(req, res, next) {
         res.status(500);
     });
 }
+
 //=================================================================//
 // user post mobile,username and image and save in database        //
 //=================================================================//
