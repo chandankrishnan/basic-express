@@ -16,6 +16,10 @@
 6)<a href="https://www.npmjs.com/package/multiparty">multiparty</a><br>
 7)<a href="https://www.npmjs.com/package/jsonwebtoken">jsonwebtoken</a><br>
 8)<a href="https://www.npmjs.com/package/bunyan">bunyan</a><br>
+9)<a href="https://www.npmjs.com/package/compression">compression</a><br>
+10)<a href="https://www.npmjs.com/package/helmet">helmet</a><br>
+11)<a href="https://www.npmjs.com/package/colors">colors</a><br>
+
 
 <p> install all require npm dependencies for app using following command<br>
 <b>eg.sudo npm install body-parser --save</b>  :beers::beers:
