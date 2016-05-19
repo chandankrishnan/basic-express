@@ -10,7 +10,7 @@ function authenticate() {
 }
 
 authenticate.prototype.token = function(postData, cb) {
-  var self=this;
+    var self = this;
     if (comm.isEmail(postData.email)) {
         conn.angularUser.findOne({
             email: postData.email,
@@ -29,7 +29,7 @@ authenticate.prototype.token = function(postData, cb) {
                     if (error) {
                         return cb(error, null);
                     } else {
-                      self.emit('send token');
+                        self.emit('send token');
                         return cb(null, token);
                     }
                 });
@@ -49,7 +49,7 @@ authenticate.prototype.gitToken = function(params, cb) {
 };
 
 authenticate.prototype.mobileToken = function(mobile, cb) {
-  var self=this;
+    var self = this;
     if (comm.isMobile(mobile.mobile)) {
         conn.User.findOne({
             mobile: mobile.mobile
@@ -69,7 +69,7 @@ authenticate.prototype.mobileToken = function(mobile, cb) {
 }
 
 authenticate.prototype.verify = function(token, cb) {
-var self=this;
+    var self = this;
     var verify = comm.verifyJWT(token.token)
     self.emit('token verify');
     cb(null, verify);

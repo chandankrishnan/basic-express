@@ -4,7 +4,8 @@
 var express = require('express'),
     router = express.Router(),
     authenticate = require('../model/authenticate'),
-    auth = new authenticate();
+    auth = new authenticate(),
+    Event = require('events').EventEmitter;
 
 //=================================================================//
 //                         JWT for angular                         //
@@ -84,15 +85,16 @@ router.post('/verify', function(req, res) {
     });
 });
 
-auth.on('data-save',function(){
-  console.log('data saved');
+//EventEmitter on
+auth.on('data-save', function() {
+    console.log('data saved');
 });
 
-auth.on('token verify',function(){
-  console.log('token verify');
+auth.on('token verify', function() {
+    console.log('token verify');
 });
 
-auth.on('send token',function(){
-  console.log('send token');
+auth.on('send token', function() {
+    console.log('send token');
 });
 module.exports = router;

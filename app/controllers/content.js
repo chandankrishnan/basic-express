@@ -2,7 +2,8 @@ var express = require('express'),
     router = express.Router(),
     content = require('../model/content'),
     conn = new content(),
-    multiparty = require('multiparty');
+    multiparty = require('multiparty'),
+    Event = require('events').EventEmitter;
 
 //=================================================================//
 //                     user add new content                        //
@@ -84,7 +85,8 @@ router.get('/user-content-info/:contentId', function(req, res) {
     })
 });
 
-conn.on('data-save',function(){
-  console.log('data saved');
+//EventEmitter on
+conn.on('data-save', function() {
+    console.log('data saved');
 });
 module.exports = router;

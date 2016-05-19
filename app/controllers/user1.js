@@ -5,6 +5,7 @@ var express = require('express'),
     router = express.Router(),
     content = require('../model/user1'),
     conn = new content(),
+    Event = require('events').EventEmitter,
     multiparty = require('multiparty');
 
 //============================================================//
@@ -139,16 +140,17 @@ router.post('/signup', function(req, res) {
     });
 });
 
-conn.on('data-save',function(){
-  console.log('data saved')
+//EventEmitter on
+conn.on('data-save', function() {
+    console.log('data saved')
 });
 
-conn.on('data-verify',function(){
-  console.log('data verify');
+conn.on('data-verify', function() {
+    console.log('data verify');
 });
 
-conn.on('set-profile-pic',function(){
-  console.log('set a profile pic');
+conn.on('set-profile-pic', function() {
+    console.log('set a profile pic');
 });
 
 module.exports = router;

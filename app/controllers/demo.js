@@ -5,7 +5,8 @@
 var express = require('express'),
     router = express.Router(),
     contentInfo = require('../model/demo'),
-    content = new contentInfo();
+    content = new contentInfo(),
+    Event = require('events').EventEmitter;
 
 //=================================================================//
 //             Get contentinfo in json format                      //
@@ -75,7 +76,9 @@ router.post('/:mobile/:username', rawBody, function(req, res) {
         })
     }
 })
-content.on('data-save',function(){
-  console.log('data saved');
+
+//EventEmitter on
+content.on('data-save', function() {
+    console.log('data saved');
 })
 module.exports = router;
