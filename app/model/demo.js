@@ -424,13 +424,13 @@ Demo.prototype.getParticipant = function(data) {
 //                            for demo                             //
 //=================================================================//
 Demo.prototype.postdata = function(data, cb) {
-  var self=this;
+    var self = this;
     var data = new conn.Demo(data);
     data.save(function(error, result) {
         if (error) {
             cb(error, null)
         } else {
-          self.emit('data-save');
+            self.emit('data-save');
             cb(null, "successfully save");
         }
     })
