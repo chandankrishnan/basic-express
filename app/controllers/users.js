@@ -1,3 +1,6 @@
+/**
+ * define require module
+ */
 var express = require('express'),
     router = express.Router(),
     UserList = require('../model/users'),
@@ -5,7 +8,10 @@ var express = require('express'),
     Event = require('events').EventEmitter;
 
 
-// return all users
+/**
+ * return all users
+ * @return {data}
+ */
 router.get('/', function(req, res, next) {
     user.all(function(err, data) {
         if (err) {
@@ -16,7 +22,11 @@ router.get('/', function(req, res, next) {
     });
 });
 
-//save user
+/**
+ * save postData in database
+ * @param {first,middle,last,avtar,age,gender}
+ * @return {data}
+ */
 router.post('/save', function(req, res) {
     var userData = {
         name: {
@@ -40,9 +50,14 @@ router.post('/save', function(req, res) {
 
 });
 
-//event listner for user save
+/**
+ * EventEmitter on
+ */
 user.on('user-saved', function() {
     console.log('User Saved');
 })
 
+/**
+ * @exports {router}
+ */
 module.exports = router;

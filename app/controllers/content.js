@@ -1,3 +1,6 @@
+/**
+ * define require module
+ */
 var express = require('express'),
     router = express.Router(),
     content = require('../model/content'),
@@ -5,11 +8,13 @@ var express = require('express'),
     multiparty = require('multiparty'),
     Event = require('events').EventEmitter;
 
-//=================================================================//
-//                     user add new content                        //
-// if it valid extension i.e(gif|jpg|jpeg|tiff|png|bmp and save    //
-//in database                                                      //
-//=================================================================//
+/**
+ *                     user add new content
+ * if it valid extension i.e(gif|jpg|jpeg|tiff|png|bmp and save
+ * in database
+ * @param {file,uid,cid,displayName,description}
+ * @return {data}
+ */
 router.post('/content', function(req, res) {
     var form = new multiparty.Form();
     form.parse(req, function(error, fields, files) {
@@ -31,11 +36,13 @@ router.post('/content', function(req, res) {
     })
 });
 
-//=================================================================//
-//                      user view content                          //
-// user send contentId and action then it check valid              //
-// contentId then update action in database                        //
-//=================================================================//
+/**
+ *                      user view content
+ * user send contentId and action then it check valid
+ * contentId then update action in database
+ * @param {contentId,action}
+ * @return {data}
+ */
 router.get('/user-content-view/:contentId/:action', function(req, res) {
     var Data = {
         contentId: req.params.contentId,
@@ -50,10 +57,12 @@ router.get('/user-content-view/:contentId/:action', function(req, res) {
     });
 });
 
-//=================================================================//
-// view user content by passing array of userId then spit userId   //
-// and find userId in database then send result in json format     //
-//=================================================================//
+/**
+ * view user content by passing array of userId then spit userId
+ * and find userId in database then send result in json format
+ * @param {[userId]}
+ * @return {data}
+ */
 router.get('/user-content-byid/:userId', function(req, res) {
     var Data = {
         params: req.params.userId.split(',')
@@ -67,11 +76,13 @@ router.get('/user-content-byid/:userId', function(req, res) {
     })
 });
 
-//================================================================//
-// view user content by passing array of contentId then spit      //
-// contentId and find contentId in database then send result      //
-// in json format                                                 //
-//================================================================//
+/**
+ * view user content by passing array of contentId then spit
+ * contentId and find contentId in database then send result
+ * in json format
+ * @param {[contentId]}
+ * @return {data}
+ */
 router.get('/user-content-info/:contentId', function(req, res) {
     var Data = {
         params: req.params.contentId.split(',')
@@ -85,8 +96,18 @@ router.get('/user-content-info/:contentId', function(req, res) {
     })
 });
 
-//EventEmitter on
+/**
+ * EventEmitter on
+ */
 conn.on('data-save', function() {
     console.log('data saved');
 });
+
+conn.on('update data', function() {
+    console.log('data updated')
+});
+
+/**
+ * @exports {router}
+ */
 module.exports = router;

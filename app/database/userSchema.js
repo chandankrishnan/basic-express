@@ -1,16 +1,12 @@
-//=================================================================//
-//             Define dependencies and database                    //
-//=================================================================//
+/**
+ * define require module
+ */
 var mongoose = require('mongoose');
-// var database= "mongodb://developer:bridgeit@ds013908.mongolab.com:13908/sp";
-// var conn=mongoose.connect(database);
 
-
-
-//=================================================================//
-//        Define addContent and User Schema (shopping pad app)     //
-//	           also define it model and exports it                 //
-//=================================================================//
+/**
+ * Define addContent and User Schema (shopping pad app)
+ * also define it model and exports it
+ */
 var addContent = mongoose.Schema({
     userId: {
         type: Number
@@ -51,6 +47,9 @@ var addContent = mongoose.Schema({
     action: [String],
 });
 var addContent = mongoose.model('addContent', addContent, 'addContent');
+/**
+ * @exports {addContent}
+ */
 exports.addContent = addContent;
 
 var User = mongoose.Schema({
@@ -76,12 +75,15 @@ var User = mongoose.Schema({
 });
 
 var User = mongoose.model('User', User, 'User');
+/**
+ * @exports {User}
+ */
 exports.User = User;
 
-//=================================================================//
-//       Define feedback and angularUser Schema(bridgelabz site)   //
-//	           also define it model and exports it                 //
-//=================================================================//
+/**
+ * Define feedback and angularUser Schema(bridgelabz site)
+ * also define it model and exports it
+ */
 var feedback = mongoose.Schema({
     name: {
         type: String,
@@ -103,6 +105,9 @@ var feedback = mongoose.Schema({
 });
 
 var feedback = mongoose.model('feedback', feedback, 'feedback');
+/**
+ * @exports {feedback}
+ */
 exports.feedback = feedback;
 
 var angularUser = mongoose.Schema({
@@ -126,6 +131,9 @@ var angularUser = mongoose.Schema({
     }
 });
 var angularUser = mongoose.model('angularUser', angularUser, 'angularUser');
+/**
+ * @exports {angularUser}
+ */
 exports.angularUser = angularUser;
 var Demo = mongoose.Schema({
     username: {
@@ -145,8 +153,14 @@ var Demo = mongoose.Schema({
 });
 
 var Demo = mongoose.model('Demo', Demo, 'Demo');
+/**
+ * @exports {Demo}
+ */
 exports.Demo = Demo;
-// Embedded Name schema to be used in User Schema
+
+/**
+ * for Demo
+ */
 var Names = mongoose.Schema({
     first: {
         type: String,
@@ -190,4 +204,7 @@ var userSchema = mongoose.Schema({
     }
 });
 var Users = mongoose.model('Users', userSchema, 'Users');
+/**
+ * @exports {users}
+ */
 exports.Users = Users;

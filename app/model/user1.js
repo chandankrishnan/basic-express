@@ -1,17 +1,36 @@
+/**
+ * define require module
+ */
 var util = require("util"),
     EventEmitter = require("events").EventEmitter,
     conn = require('../database/userSchema'),
     comm = require('../helper/common'),
     fs = require('fs');
-
+/**
+ * @constructor
+ */
 function user1() {
     EventEmitter.call(this);
 }
 util.inherits(user1, EventEmitter);
 
+/**
+ * In this function register a new user
+ * @param {userData}
+ * @return {cb}
+ */
 user1.prototype.newRegister = function(userData, cb) {
+    /** 
+     *@this {self} refers to emit function
+     */
     var self = this;
+    /** 
+     * check mobile valid or not
+     */
     if (comm.isMobile(userData.mobile)) {
+        /**
+         *find mobile exist in database if exist then send otp
+         */
         conn.User.findOne({
             mobile: userData.mobile
         }, function(error, existingUser) {
@@ -42,9 +61,23 @@ user1.prototype.newRegister = function(userData, cb) {
     }
 };
 
+/**
+ *In this function,verify userdata
+ *@param {userData}
+ *@return {cb}
+ */
 user1.prototype.verification = function(userData, cb) {
+    /** 
+     *@this {self} refers to emit function
+     */
     var self = this;
+    /** 
+     * check mobile valid or not
+     */
     if (comm.isMobile(userData.mobile)) {
+        /**
+         * find data in database and update otp as a '0'
+         */
         conn.User.findOne({
             mobile: userData.mobile,
             otp: userData.otp
@@ -75,9 +108,23 @@ user1.prototype.verification = function(userData, cb) {
     }
 };
 
+/**
+ * In this function set profle picture
+ *@param {userData}
+ *@return {cb}
+ */
 user1.prototype.setprofilePic = function(userData, cb) {
+    /** 
+     *@this {self} refers to emit function
+     */
     var self = this;
+    /** 
+     * check file format valid or not
+     */
     if (comm.isFile(userData.image.originalFilename)) {
+        /**
+         *find in database and update image in database
+         */
         conn.User.findOne({
             mobile: userData.mobile
         }, function(err, existingUser) {
@@ -101,9 +148,25 @@ user1.prototype.setprofilePic = function(userData, cb) {
     }
 };
 
+/**
+ *In this function save the feedback from user
+ *@param {postdata}
+ *@return {cb}
+ */
 user1.prototype.feedback = function(postData, cb) {
+    /** 
+     *@this {self} refers to emit function
+     */
     var self = this;
+    /** 
+     * check email valid or not and
+     * check name should be greater than 3
+     * check message should be greater than 5
+     */
     if (postData.name.length > 3 && postData.message.length > 5 && comm.isEmail(postData.email)) {
+        /**
+         * save data in database
+         */
         var data = new conn.feedback({
             name: postData.name,
             email: postData.email,
@@ -122,7 +185,15 @@ user1.prototype.feedback = function(postData, cb) {
     }
 };
 
+/**
+ * In this function search name
+ * @param {postData}
+ * @return {cb}
+ */
 user1.prototype.search = function(postData, cb) {
+    /**
+     *find name in database
+     */
     conn.feedback.find({
         'name': {
             $regex: postData.r
@@ -140,7 +211,14 @@ user1.prototype.search = function(postData, cb) {
     })
 };
 
+/**
+ *In this function ,find all feedback in database
+ * @return {cb}
+ */
 user1.prototype.searchAll = function(cb) {
+    /**
+     * find all data from database
+     */
     conn.feedback.find({}, function(err, result) {
         if (err) {
             cb(err, null);
@@ -150,9 +228,26 @@ user1.prototype.searchAll = function(cb) {
     })
 };
 
+/**
+ * In this function,user signup
+ * @param {data}
+ * @return {cb}
+ */
 user1.prototype.signUp = function(data, cb) {
+    /** 
+     *@this {self} refers to emit function
+     */
     var self = this;
+    /** 
+     * check  email and mobile valid or not
+     * check name greater than 3
+     * check password greater than 7
+     */
+    ;
     if (comm.isEmail(data.email) && comm.isMobile(data.contact) && data.name.length > 3 && data.password.length > 7) {
+        /**
+         * find in database email exist or not
+         */
         conn.angularUser.findOne({
             email: data.email
         }, function(err, existingUser) {
@@ -165,6 +260,9 @@ user1.prototype.signUp = function(data, cb) {
                 contact: data.contact,
                 password: data.password
             });
+            /**
+             * save data1 in database
+             */
             data1.save(function(err, data) {
                 if (err) {
                     cb(err, null);
@@ -179,4 +277,7 @@ user1.prototype.signUp = function(data, cb) {
     }
 };
 
+/**
+ * @exports {user1}
+ */
 module.exports = user1;

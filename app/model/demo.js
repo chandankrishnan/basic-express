@@ -1,11 +1,13 @@
-// User Model
+/**
+ * define require module
+ */
 var util = require("util"),
     EventEmitter = require("events").EventEmitter,
     conn = require('../database/userSchema');
 
-//=================================================================//
-//                            Define json                          //
-//=================================================================//
+/**
+ * define json for content
+ */
 var id = 1;
 var content = [{
     "content_id": id++,
@@ -139,6 +141,9 @@ var content = [{
     "zip": "http://54.86.64.100:3000/api/v1/content/zip"
 }];
 
+/**
+ * define json for userView
+ */
 var userView = [{
     "userContentId": 0,
     "userAdminId": 0,
@@ -271,6 +276,9 @@ var userView = [{
     "action": "open"
 }];
 
+/**
+ * define json for participant
+ */
 var participant = [{
     "userId": 0,
     "contentId": 1,
@@ -385,28 +393,31 @@ var participant = [{
     "action": "share"
 }];
 
+/**
+ * @constructor
+ */
 function Demo() {
     EventEmitter.call(this);
 }
 util.inherits(Demo, EventEmitter);
 
-//=================================================================//
-//             Get contentinfo in json format                      //
-//=================================================================//
+/**
+ * In this function return content
+ */
 Demo.prototype.contentInfo = function() {
     return content;
 };
 
-//=================================================================//
-//             Get usercontentView in json format                  //
-//=================================================================//
+/**
+ * In this function return userView
+ */
 Demo.prototype.userContentView = function() {
     return userView;
 };
 
-//=================================================================//
-//             Get participant in json format                      //
-//=================================================================//
+/**
+ * In this function return participant
+ */
 Demo.prototype.getParticipant = function(data) {
     var params = data.split(',');
     var result = [];
@@ -420,11 +431,19 @@ Demo.prototype.getParticipant = function(data) {
     return result;
 };
 
-//=================================================================//
-//                            for demo                             //
-//=================================================================//
+/**
+ * In this function, save file,mobile,username in database
+ * @param {data}
+ * @param {cb}
+ */
 Demo.prototype.postdata = function(data, cb) {
+    /** 
+     *@this {self} refers to emit function
+     */
     var self = this;
+    /** 
+     * save data in database
+     */
     var data = new conn.Demo(data);
     data.save(function(error, result) {
         if (error) {
@@ -436,4 +455,7 @@ Demo.prototype.postdata = function(data, cb) {
     })
 }
 
+/**
+ * @exports {Demo}
+ */
 module.exports = Demo;

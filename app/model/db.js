@@ -1,10 +1,15 @@
+/**
+ * define require modules
+ */
 var mongoose = require('mongoose');
 
 var state = {
         db: null,
     },
     url = 'mongodb://developer:bridgeit@ds013908.mongolab.com:13908/sp';
-
+/**
+ * @exports {connect,lib,get,close}
+ */
 module.exports = {
     connect: function(cb) {
         if (state.db) {

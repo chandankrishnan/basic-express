@@ -1,3 +1,6 @@
+/**
+ * define require modules for app
+ */
 var express = require('express'),
     app = express(),
     http = require('http'),
@@ -8,6 +11,9 @@ var express = require('express'),
     colors = require('colors'),
     logger = require('./app/helper/logger');
 
+/**
+ * configure modules
+ */
 app.set('views', __dirname + '/app/views')
 app.engine('jade', require('jade').__express)
 app.set('view engine', 'jade')
@@ -19,20 +25,29 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-//middelware to load controllers
+/** 
+ * middelware to load controllers
+ */
 app.use(require('./app/controllers'))
 
+/** 
+ * when database connect with then server start
+ */
 db.connect(function() {
-    //callback when connect success
     http.createServer(app).listen(port);
     console.log('server connecting on port '.rainbow + port)
 });
 
+/** 
+ *log info when connect with database
+ */
 db.get().connection.on('connected', function() {
     logger.info('Mongoose connected on port ' + port);
 });
 
-// If the Node process ends, close the Mongoose connection
+/** 
+ * If the Node process ends, close the Mongoose connection
+ */
 process.on('SIGINT', function() {
     db.get().connection.close(function() {
         logger.info('Mongoose connection disconnected through app termination');
